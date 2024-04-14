@@ -25,8 +25,6 @@ const images = [
   },
 ];
 const galleryElement = document.querySelector('.gallery');
-
-galleryElement.classList.add('gallery-container');
 galleryElement.style.display = 'flex';
 galleryElement.style.listStyleType = 'none';
 galleryElement.style.padding = '0';
@@ -34,7 +32,7 @@ galleryElement.style.margin = '0';
 galleryElement.style.justifyContent = 'space-between';
 galleryElement.style.flexWrap = 'wrap';
 
-images.forEach(image => {
+const imgMas = images.map(image => {
   const li = document.createElement('li');
   const img = document.createElement('img');
   img.src = image.url;
@@ -42,6 +40,7 @@ images.forEach(image => {
   img.style.width = '200px'; 
   img.style.height = 'auto'; 
   li.appendChild(img);
-  galleryElement.appendChild(li);
+  return li;
 });
-  
+galleryElement.append(...imgMas);
+
